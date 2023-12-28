@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2952869088060416535}
   - component: {fileID: -7371729318125758642}
   - component: {fileID: 6826492606313369128}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cigar
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2689425673267538647}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.88, y: 1.09, z: 1.96}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.05279668, y: 0.026355002, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []

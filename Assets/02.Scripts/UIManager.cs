@@ -12,13 +12,18 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI itemPromptText;
     public TextMeshProUGUI ingredientTxt;
     public int ingredient;
+    public TextMeshProUGUI goldTxt;
+    public int gold;
+    public Image errorPopup;
 
     private void Awake()
     {
         instance = this;
     }
+
     private void Update()
     {
         ingredientTxt.text = ingredient.ToString();
+        goldTxt.text = gold.ToString();
     }
 }

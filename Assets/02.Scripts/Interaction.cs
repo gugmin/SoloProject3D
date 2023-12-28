@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -21,9 +22,10 @@ public class Interaction : MonoBehaviour
 
     private void Update()
     {
+        //물체 감지
         Ray ray = new Ray(transform.position, transform.forward);
         Physics.Raycast(ray, out RaycastHit hit, 2f);
-        if (hit.collider != null)
+        if (hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("InteractObject"))
         {
             if (hit.collider.gameObject != curInteractGameobject)
             {
@@ -34,40 +36,42 @@ public class Interaction : MonoBehaviour
         }
         else
         {
+            //초기화 및 UI 꺼주기
             curInteractGameobject = null;
             curInteractable = null;
             UIManager.instance.itemPromptText.gameObject.SetActive(false);
-            UIManager.instance.InteractionUIbar.gameObject.SetActive(false);
+            //UIManager.instance.InteractionUIbar.gameObject.SetActive(false);
         }
     }
     
+    //press E key
     public void OnInteractionInput(InputAction.CallbackContext context)
     {
-        if (curInteractable != null && curInteractGameobject.CompareTag("Item"))
-        {
-            if (context.phase == InputActionPhase.Started && curInteractable != null)
-            {
-                curInteractable.OnInteract();
-                curInteractGameobject = null;
-                curInteractable = null;
-                UIManager.instance.itemPromptText.gameObject.SetActive(false);
-            }
-        }
-        else if (curInteractable != null && curInteractGameobject.CompareTag("Maker"))
+        if (curInteractable != null)
         {
             UIManager.instance.itemPromptText.gameObject.SetActive(false);
-            UIManager.instance.InteractionUIbar.gameObject.SetActive(true);
 
-            if (context.phase == InputActionPhase.Started && curInteractable != null)
+            if (context.phase == InputActionPhase.Started)
             {
-                curInteractable.OnInteracting();
+                if (curInteractGameobject.CompareTag("Maker"))
+                {
+                    //UIManager.instance.InteractionUIbar.gameObject.SetActive(true);
+                    curInteractable.OnInteracting();
+                }
+                else
+                {
+                    // 생성이 아닌 습득하는 부분
+                    curInteractable.OnInteract();
+                }
             }
             else if (context.phase == InputActionPhase.Canceled)
             {
                 curInteractable.UnInteracting();
             }
+            //초기화
             curInteractGameobject = null;
             curInteractable = null;
         }
     }
+
 }
