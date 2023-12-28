@@ -16,31 +16,28 @@ public interface IInteractable
 
 public class Interaction : MonoBehaviour
 {
-    public TextMeshProUGUI itemPromptText;
     private IInteractable curInteractable;
     private GameObject curInteractGameobject;
-    public Image InteractionUIbar;
 
     private void Update()
     {
         Ray ray = new Ray(transform.position, transform.forward);
-        Physics.Raycast(ray, out RaycastHit hit, 1f);
+        Physics.Raycast(ray, out RaycastHit hit, 2f);
         if (hit.collider != null)
         {
             if (hit.collider.gameObject != curInteractGameobject)
             {
                 curInteractGameobject = hit.collider.gameObject;
                 curInteractable = hit.collider.GetComponent<IInteractable>();
-                itemPromptText.gameObject.SetActive(true);
+                UIManager.instance.itemPromptText.gameObject.SetActive(true);
             }
-
         }
         else
         {
             curInteractGameobject = null;
             curInteractable = null;
-            itemPromptText.gameObject.SetActive(false);
-            InteractionUIbar.gameObject.SetActive(false);
+            UIManager.instance.itemPromptText.gameObject.SetActive(false);
+            UIManager.instance.InteractionUIbar.gameObject.SetActive(false);
         }
     }
     
@@ -53,13 +50,13 @@ public class Interaction : MonoBehaviour
                 curInteractable.OnInteract();
                 curInteractGameobject = null;
                 curInteractable = null;
-                itemPromptText.gameObject.SetActive(false);
+                UIManager.instance.itemPromptText.gameObject.SetActive(false);
             }
         }
         else if (curInteractable != null && curInteractGameobject.CompareTag("Maker"))
         {
-            itemPromptText.gameObject.SetActive(false);
-            InteractionUIbar.gameObject.SetActive(true);
+            UIManager.instance.itemPromptText.gameObject.SetActive(false);
+            UIManager.instance.InteractionUIbar.gameObject.SetActive(true);
 
             if (context.phase == InputActionPhase.Started && curInteractable != null)
             {

@@ -21,6 +21,7 @@ public class ChangeUIBar
 public class InteractionObject : MonoBehaviour, IInteractable
 {
     public ChangeUIBar interactingUI;
+    public GameObject cigar;
 
     void Start()
     {
@@ -32,33 +33,38 @@ public class InteractionObject : MonoBehaviour, IInteractable
         interactingUI.uiBar.fillAmount = interactingUI.GetPercentage();
         if (interactingUI.curValue <= 0f)
         {
-            Destroy(gameObject);
+            UIManager.instance.ingredient -= 1;
+            Instantiate(cigar);
+            interactingUI.curValue = interactingUI.StartValue;
         }
 
-        if (interactingUI.uiBar.gameObject.activeSelf == false)
+        if (UIManager.instance.InteractionUIbar.gameObject.activeSelf == false)
         {
-            StopCoroutine("Subtruct");
+            StopCoroutine("Subtract");
         }
     }
 
     public void OnInteract()
     {
-        //TODO 인벤 만들면 넣어주는 기능 추가
-        Destroy(gameObject);
     }
 
     public void OnInteracting()
     {
-        StartCoroutine("Subtruct");
+        if (UIManager.instance.ingredient == 0)
+        {
+            //경고창
+        }
+        else
+        StartCoroutine("Subtract");
     }
 
     public void UnInteracting()
     {
-        StopCoroutine("Subtruct");
+        StopCoroutine("Subtract");
         interactingUI.curValue = interactingUI.StartValue;
     }
 
-    IEnumerator Subtruct()
+    IEnumerator Subtract()
     {
         while (interactingUI.curValue > 0)
         {
