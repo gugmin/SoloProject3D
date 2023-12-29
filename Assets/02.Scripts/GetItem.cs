@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.ProBuilder.MeshOperations;
 
 public class GetItem : MonoBehaviour, IInteractable
 {
@@ -11,10 +12,18 @@ public class GetItem : MonoBehaviour, IInteractable
             UIManager.instance.ingredient++;
             Destroy(gameObject);
         }
-        else
+        else if(gameObject.CompareTag("Item"))
         {
-            //TODO 인벤 만들면 넣어주는 기능 추가
+            UIManager.instance.item += 1;
             Destroy(gameObject);
+        }
+        else if (gameObject.CompareTag("SellBox"))
+        {
+            if (UIManager.instance.item > 0)
+            {
+                UIManager.instance.item -= 1;
+                UIManager.instance.gold += 1200;
+            }
         }
     }
 

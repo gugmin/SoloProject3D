@@ -93,6 +93,7 @@ public class InteractionObject : MonoBehaviour, IInteractable
             yield return new WaitForSeconds(0.1f);
         }
     }
+
     public void ClosePanel()
     {
         UIManager.instance.errorPopup.gameObject.SetActive(false);

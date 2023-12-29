@@ -14,6 +14,8 @@ public class UIManager : MonoBehaviour
     public int ingredient;
     public TextMeshProUGUI goldTxt;
     public int gold;
+    public TextMeshProUGUI itemTxt;
+    public int item;
     public Image errorPopup;
 
     private void Awake()
@@ -25,5 +27,6 @@ public class UIManager : MonoBehaviour
     {
         ingredientTxt.text = ingredient.ToString();
         goldTxt.text = gold.ToString();
+        itemTxt.text = item.ToString();
     }
 }
