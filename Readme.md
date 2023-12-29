@@ -1,6 +1,5 @@
 #  3D 개인프로젝트
 
-
 </br>
 
 ## 제작 : 김국민
@@ -18,13 +17,14 @@
     * 메인 씬으로 이동하는 버튼
 
 * 게임 진행 화면
-    * 각각의 오브젝트들을 상호작용하여 돈을 축적한다.
+    * 각각의 오브젝트들을 상호작용하는 모습
 
 
 
 ## 기능 세부 설명
 * 게임 진행 
-    * 
+    * 재료, 돈, 완성품 이렇게 3가지가 존재하고 해당 생성박스를 찾아 상호작용하며
+    큰돈을 만드는 게임이다.
 
 
 ##  기술 스택
@@ -39,7 +39,7 @@
 
 ### 게임 시작 화면
 
-![GameStartScene]
+![GameStartScene](https://github.com/gugmin/SoloProject3D/assets/149454489/e82c707f-bc48-414f-bc80-7f025764e847)
  
 
 * 게임을 시작하기 전 상황이며 플레이 버튼이 있다.
@@ -48,9 +48,9 @@
 <br>
 ### 게임 진행 공통 부분
 
-__일시정지__  
+__상호작용__  
 
-![Interaction]
+![Interaction](https://github.com/gugmin/SoloProject3D/assets/149454489/fa1bcf6d-6878-43d5-acac-e0c4181f3e3d)
 * 상호작용이 가능한 물체에 다가가면 Press E key라는 텍스트가 나온다.
 
  
@@ -64,9 +64,22 @@ __일시정지__
 
 __인게임__
 
-![MainScene]
+![MainScene](https://github.com/gugmin/SoloProject3D/assets/149454489/c31e1c75-368e-4fc3-8d14-0d2c9830a5f3)
 
-* 
+* Start버튼을 누르고 MainScene으로 이동하면 볼 수 있는 초기 상황이다.
+
+![UI](https://github.com/gugmin/SoloProject3D/assets/149454489/a59da04e-ef68-46e1-a47e-322b5eb14383)
+
+* 게임 화면의 상단에 재료, 돈, 완성품 순으로 표시되어 있는 UI를 볼 수 있다.
+
+![Interacting](https://github.com/gugmin/SoloProject3D/assets/149454489/46caa1f8-b605-4f0e-9165-eb01a403c509)
+
+* 상호작용 하는 오브젝트가 생성 박스라면 E key를 누르고 있을 때 UIBar의 게이지가 줄어들고 다 줄어 들었다면 오브젝트의 맞는
+아이템을 생성해준다. 
+
+![Item](https://github.com/gugmin/SoloProject3D/assets/149454489/4be3b3ea-b213-4561-85ff-ce872b69ceb7)
+
+* 생성된 아이템을 볼 수 있다.
 
 
 <br/>
@@ -100,8 +113,6 @@ __문제__:  Assets의 용량이 무거운걸 추가하다 보니까 깃허브�
 __결과(해결)__: 파일을 쪼개서 커밋하면서 어떤 파일에서 걸리는지 체크한뒤 삭제를 했다.
 
 ## 프로젝트 소감
-
-___김국민___  
 
  개발 스코프를 잘 짜서 해야 스트레스 안받고 작업에 몰두 할 수 있다는걸 알았습니다.
 <br/>
